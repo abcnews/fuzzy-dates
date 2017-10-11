@@ -1,6 +1,6 @@
 {
   "name": "@abcnews/fuzzy-dates",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A fuzzy date parser/sorter",
   "main": "lib/index.js",
   "scripts": {
@@ -12,7 +12,10 @@
     "type": "git",
     "url": "git+ssh://git@github.com/abcnews/fuzzy-dates.git"
   },
-  "keywords": ["fuzzy", "dates"],
+  "keywords": [
+    "fuzzy",
+    "dates"
+  ],
   "author": "Nathan Hoad",
   "license": "ISC",
   "bugs": {
