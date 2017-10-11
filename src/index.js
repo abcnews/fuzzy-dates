@@ -2,7 +2,21 @@ const getDaysInMonth = require('date-fns/get_days_in_month');
 const compareAsc = require('date-fns/compare_asc');
 const isSameMonth = require('date-fns/is_same_month');
 
-const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'nov', 'dec'];
+const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const FULL_MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
 
 /**
  * Parse a string to see if there is meaningful datetime
@@ -183,4 +197,28 @@ function compare(a, b) {
   }
 }
 
-module.exports = { parse, compare };
+/**
+ * Output a date (optionally fuzzy) as something like February 10, 2017 or Mid February, 2017
+ * @param {Date} date 
+ * @return {string}
+ */
+function formatDate(date) {
+  let tokens = [];
+
+  // Early, Mid, or Late
+  if (typeof date.fuzzy === 'string') {
+    tokens.push(date.fuzzy.charAt(0).toUpperCase() + date.fuzzy.slice(1));
+  }
+
+  // Month
+  tokens.push(FULL_MONTHS[date.getMonth()]);
+
+  // Day number
+  if (!date.fuzzy) {
+    tokens.push(date.getDate());
+  }
+
+  return tokens.join(' ') + ', ' + date.getFullYear();
+}
+
+module.exports = { parse, compare, formatDate };

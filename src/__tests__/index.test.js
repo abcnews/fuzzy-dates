@@ -129,3 +129,13 @@ describe('#compare', () => {
     expect(a[8]).toBe(novemberLater);
   });
 });
+
+describe('#formatDate', () => {
+  test('It can format dates', () => {
+    let date = FuzzyDates.parse('10 March 2015');
+    expect(FuzzyDates.formatDate(date)).toBe('March 10, 2015');
+
+    date = FuzzyDates.parse('2017, Late November');
+    expect(FuzzyDates.formatDate(date)).toBe('Late November, 2017');
+  });
+});

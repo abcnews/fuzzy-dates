@@ -62,6 +62,18 @@ const FuzzyDates = require('@abcnews/fuzzy-dates');
 // Late November, 2019
 ```
 
+You can also output a date in a nice and simple format
+
+```javascript
+const FuzzyDates = require('@abcnews/fuzzy-dates');
+
+let date = FuzzyDates.parse('10 March 2015');
+FuzzyDates.formatDate(date); // March 10, 2015
+
+date = FuzzyDates.parse('2017, Late November');
+FuzzyDates.formatDate(date); // Late November, 2017
+```
+
 ## Authors
 
 - Nathan Hoad ([nathan@nathanhoad.net](mailto:nathan@nathanhoad.net))
