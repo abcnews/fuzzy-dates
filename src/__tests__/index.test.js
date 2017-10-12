@@ -137,5 +137,8 @@ describe('#formatDate', () => {
 
     date = FuzzyDates.parse('2017, Late November');
     expect(FuzzyDates.formatDate(date)).toBe('Late November, 2017');
+
+    date = FuzzyDates.parse('2017, Late November');
+    expect(FuzzyDates.formatDate(date, true)).toBe('Late Nov, 2017');
   });
 });

@@ -200,9 +200,10 @@ function compare(a, b) {
 /**
  * Output a date (optionally fuzzy) as something like February 10, 2017 or Mid February, 2017
  * @param {Date} date 
+ * @param {boolean} shortMonth
  * @return {string}
  */
-function formatDate(date) {
+function formatDate(date, shortMonth) {
   let tokens = [];
 
   // Early, Mid, or Late
@@ -211,7 +212,11 @@ function formatDate(date) {
   }
 
   // Month
-  tokens.push(FULL_MONTHS[date.getMonth()]);
+  let month = FULL_MONTHS[date.getMonth()];
+  if (shortMonth) {
+    month = month.slice(0, 3);
+  }
+  tokens.push(month);
 
   // Day number
   if (!date.fuzzy) {
