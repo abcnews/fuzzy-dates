@@ -211,7 +211,13 @@ function formatDate(date, shortMonth) {
 
   // Early, Mid, or Late
   if (typeof date.fuzzy === 'string') {
-    tokens.push(date.fuzzy.charAt(0).toUpperCase() + date.fuzzy.slice(1));
+    let prefix = date.fuzzy.charAt(0).toUpperCase() + date.fuzzy.slice(1);
+
+    if (date.original.indexOf('id-') > -1) {
+      prefix = prefix + '-';
+    }
+
+    tokens.push(prefix);
   }
 
   // Month
@@ -226,7 +232,7 @@ function formatDate(date, shortMonth) {
     tokens.push(date.getDate());
   }
 
-  return tokens.join(' ') + ', ' + date.getFullYear();
+  return tokens.join(' ').replace('- ', '-') + ', ' + date.getFullYear();
 }
 
 module.exports = { parse, compare, formatDate };
