@@ -39,7 +39,7 @@ describe('#parse', () => {
     let parsed = FuzzyDates.parse('February 2');
     expect(parsed instanceof Date).toBeTruthy();
     expect(parsed.fuzzy).toBeFalsy();
-    expect(parsed.toString()).toContain('Thu Feb 02 2017 00:00:00');
+    expect(parsed.toString()).toContain('Fri Feb 02 2018 00:00:00');
 
     parsed = FuzzyDates.parse('February 2', new Date(2015, 0, 1));
     expect(parsed instanceof Date).toBeTruthy();
@@ -76,6 +76,11 @@ describe('#parse', () => {
     expect(parsed instanceof Date).toBeTruthy();
     expect(parsed.fuzzy).toBeTruthy();
     expect(parsed.toString()).toContain('Mon Jan 16 2017 00:00:00');
+
+    parsed = FuzzyDates.parse('Mid-August, 2018');
+    expect(parsed instanceof Date).toBeTruthy();
+    expect(parsed.fuzzy).toBeTruthy();
+    expect(parsed.toString()).toContain('Thu Aug 16 2018 00:00:00');
 
     parsed = FuzzyDates.parse('Late February, 2017');
     expect(parsed instanceof Date).toBeTruthy();

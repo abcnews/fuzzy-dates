@@ -25,7 +25,10 @@ const FULL_MONTHS = [
  * @return {Date}
  */
 function parse(possibleDatetime, helperDate) {
-  let tokens = possibleDatetime.toLowerCase().split(' ');
+  let tokens =
+    possibleDatetime.indexOf(' ') > -1
+      ? possibleDatetime.toLowerCase().split(/[\s-]/)
+      : possibleDatetime.toLowerCase().split(' ');
 
   // Keep track of the meanings of the tokens
   let date;
@@ -199,7 +202,7 @@ function compare(a, b) {
 
 /**
  * Output a date (optionally fuzzy) as something like February 10, 2017 or Mid February, 2017
- * @param {Date} date 
+ * @param {Date} date
  * @param {boolean} shortMonth
  * @return {string}
  */
